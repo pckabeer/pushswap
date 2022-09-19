@@ -30,9 +30,14 @@ int	ft_atoi(const char *str)
 
 int is_duplicate(t_stack *lst, int num)
 {
-	(void) lst;
-	(void) num;
-	//check whether the data is in the linked list
-	return(1);
+	t_stack *temp;
 
+	temp = lst;
+	while (temp)
+	{
+		if (temp->data == num)
+			return(0);
+		temp =temp->next;
+	}
+	return(1);
 }
