@@ -41,3 +41,16 @@ int is_duplicate(t_stack *lst, int num)
 	}
 	return(1);
 }
+void lst_print(t_stack *lst)
+{
+	t_stack *temp;
+	//int c=0;
+
+	temp = lst;
+	while (temp)
+	{
+		//printf(" %d-- %d --  %d \n",c++,temp->data,temp->next->data);
+		printf("%d \n",temp->data);
+		temp=temp->next;
+	}
+}

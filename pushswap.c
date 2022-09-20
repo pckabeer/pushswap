@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:17:05 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/09/19 21:51:59 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:14:47 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,10 @@ int	main(int argc, char **argv)
 		j = 0;
 		i++;
 	}
+	printf("\nStack A \n");
+	lst_print(sa);
+	sa = ft_rotate_stack(sa);
+	printf("\nStack A rotated \n");
+	lst_print(sa);
 	return (0);
 }

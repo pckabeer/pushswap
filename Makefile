@@ -6,7 +6,7 @@
 #    By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 20:09:45 by kpanikka          #+#    #+#              #
-#    Updated: 2022/09/19 20:39:57 by kpanikka         ###   ########.fr        #
+#    Updated: 2022/09/20 10:50:44 by kpanikka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAG	= -Wall -Werror -Wextra
 RM		= rm -f
 AR		= ar
 ARFLAG	= crs
-SRC		= ft_split.c linkedlist.c parse_util.c pushswap.c
+SRC		= ft_split.c linkedlist.c parse_util.c pushswap.c operations.c
 
 OBJS	= $(SRC:.c=.o)
 
