@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpanikka <kpanikka@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 08:51:51 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/09/20 11:15:21 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/09/22 21:56:46 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_elements
 	int					data;
 	int					index;
 	struct	s_elements	*next;
-}	t_stack;
+	struct	s_elements	*prev;
+}t_stack;
 
 int 	*ft_split(char *s, int *c);
 int		ft_atoi(const char *str);
@@ -35,11 +36,21 @@ int		ft_lstsize(t_stack *lst);
 void	ft_lstclear(t_stack **lst, void (*del)(int));
 t_stack	*ft_lstlast(t_stack *lst);
 t_stack	*ft_rotate_stack(t_stack *sa);
-void 	ft_push(t_stack *a, t_stack *b);
+t_stack *ft_rrotate_stack(t_stack *sa);
+
+void 	ft_push(t_stack **a, t_stack **b);
 void 	stack_index(t_stack *a);
 void 	stack_index_bit_shit(t_stack *b);
 void 	lst_print(t_stack *lst);
 
+//double lst
+t_stack	*ft_dlstnew(int data);
+
+void	ft_dlstadd_back(t_stack **lst, t_stack *new);
+void	ft_dlstadd_front(t_stack **lst, t_stack *new);
+int		ft_dlstsize(t_stack *lst);
+void	ft_dlstclear(t_stack **lst, void (*del)(int));
+t_stack	*ft_dlstlast(t_stack *lst);
 
 
 

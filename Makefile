@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+         #
+#    By: kpanikka <kpanikka@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 20:09:45 by kpanikka          #+#    #+#              #
-#    Updated: 2022/09/20 10:50:44 by kpanikka         ###   ########.fr        #
+#    Updated: 2022/09/22 21:06:39 by kpanikka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAG	= -Wall -Werror -Wextra
 RM		= rm -f
 AR		= ar
 ARFLAG	= crs
-SRC		= ft_split.c linkedlist.c parse_util.c pushswap.c operations.c
+SRC		= ft_split.c linkedlist.c parse_util.c pushswap.c operations.c dllst.c
 
 OBJS	= $(SRC:.c=.o)
 
