@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 22:33:42 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/09/25 09:38:03 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/09/25 11:08:48 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	min(t_stack *s, int index)
 		temp = temp->next;
 	}
 	while (temp)
-	{ 
+	{
 		if (temp->data < small->data && temp->index == 0)
 			small = temp;
 		temp = temp->next;
@@ -48,39 +48,26 @@ void	ft_index_stack(t_stack *a, int count)
 	}
 }
 
-void ft_index_shift(t_stack *s)
+void	ft_index_shift(t_stack *s)
 {
-	
 	while (s)
 	{
 		s->index = s->index >> 1;
 		s = s->next;
 	}
 }
-t_stack *ft_sort_elements(t_stack *a, t_stack *b, int count)
-{
-	t_stack *temp;
 
-	temp = a;
+t_stack	*ft_sort_elements(t_stack *a, t_stack *b, int count)
+{
 	while (--count)
 	{				
-
-			//temp = ft_rrotate_stack(temp);
-		if((a->index & 1) == 1)
+		if ((a->index & 1) == 1)
 			ft_rotate_stack(&a);
 		else
 			ft_pushb(&a, &b);
 	}
-	printf("\n stack b\n");
-			lst_print(b);
-
 	while (b)
 		ft_pusha(&b, &a);
-	printf("\n stack b after push\n");
-	lst_print(b);
-	printf("lst A now is\n");
-	lst_print(a); // ----
-	printf("last linein ft_index shift\n");
-	return(a);
-	
+	ft_index_shift(a);
+	return (a);
 }

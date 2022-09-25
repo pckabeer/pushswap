@@ -46,24 +46,37 @@ void ft_pusha(t_stack **b, t_stack **a)
 	*b =(*b)->next;
 	temp->next=NULL;
 		temp->prev = NULL;
-
 	ft_dlstadd_front(a,temp);
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
-// void stack_index(t_stack *a)
-// {}
-// void stack_index_bit_shit(t_stack *b)
-// {}
+void sa(t_stack **a)
+{
+	t_stack temp;
 
+	temp.data = (*a)->data;
+	temp.index = (*a)->index;
+	if ((*a)->next)
+	{
+		(*a)->data = (*a)->next->data;
+		(*a)->index = (*a)->next->index;
+		(*a)->next->data = temp.data;
+		(*a)->next->index = temp.index;
+	}
+	write(1,"sa\n",3);
+}
 
-// void rra(t_stack **sa)
-// {
-// 	t_stack tmp;
+void	sb(t_stack **a)
+{
+	t_stack	temp;
 
-// 	tmp = ft_lstlast(sa);
-// 	while((*a)->next->next != NULL)
-// 	{
-
-// 	}
-// }
-
+	temp.data = (*a)->data;
+	temp.index = (*a)->index;
+	if ((*a)->next)
+	{
+		(*a)->data = (*a)->next->data;
+		(*a)->index = (*a)->next->index;
+		(*a)->next->data = temp.data;
+		(*a)->next->index = temp.index;
+	}
+	write(1, "sb\n", 3);
+}

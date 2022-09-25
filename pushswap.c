@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:17:05 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/09/25 09:55:58 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:59:59 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,95 +14,58 @@
 #include <stdio.h>
 #include "pushswap.h"
 
+void ft_error(t_pswap *ps)
+{
+	(void) *ps;
+	//free all memoroes and linked lists
+}
+
+int is_sorted(t_stack *s)
+{
+	while (s->next)
+	{
+		if(s->data > s->next->data)
+		{
+			return(0);
+		}
+		s = s->next;
+	}
+	return(1);
+}
+
+void	init_pswap(t_pswap *ps)
+{
+	ps->i = 0;
+	ps->j = 0;
+	ps->sa = NULL;
+	ps->sb = NULL;
+	ps->data = NULL;
+	ps->count_stack = 1;
+}
+
 int	main(int argc, char **argv)
 {
-	int		i;
-	int		*data;
-	int		j;
-	t_stack	*sa;
-	t_stack	*sb;
-	int		count;
-	int		count_stack = 1;
+	t_pswap	ps;
 
-	i = 1;
-	j = 0;
-	sa = NULL;
-	sb = NULL;
-	data = NULL;
-	while (i < argc)
+	init_pswap(&ps);
+	while (++ps.i < argc)
 	{
-		data = ft_split(argv[i], &count);
-		count_stack+=count;
-		printf(" count : %d\n",count);
-		while (j < count && is_duplicate(sa, data[j]))
-		{
-			//printf(" %d --\n", data[j]);
-			ft_dlstadd_front(&sa, ft_dlstnew(data[j]));
-			//printf("hi1\n");
-			//sa->index = count_stack++;
-			j++;
-		}
-		j = 0;
-		i++;
+		ps.data = ft_split(argv[ps.i], &ps.count);
+		ps.count_stack += ps.count;
+		while (ps.j < ps.count && is_duplicate(ps.sa, ps.data[ps.j]))
+			ft_dlstadd_front(&ps.sa, ft_dlstnew(ps.data[ps.j++]));
+		ps.j = 0;
 	}
-			//	printf(" %d --\n", count_stack);
-	//printf("\nStack A \n");
-	//lst_print(sa);
-//		printf("\nStack A Indexed \n");
-	 ft_index_stack(sa,count_stack);
-	
-	//ft_index_shift(sa);
-//			lst_print(sa);
-//return(0);
-	int k=0;
-//				printf("\nStack A First sort\n");
-	while(count_stack>>k)
-	{
-	sa = ft_sort_elements(sa,sb,count_stack);
-	 ft_index_shift(sa);
-	k++;
-	}
-//				printf("\nStack A Sorted\n");
-//		lst_print(sa);
-	// sa = ft_sort_elements(sa,sb,count_stack);
-	// sa = ft_sort_elements(sa,sb,count_stack);
-		//lst_print(sa);
 
-	// 	ft_index_shift(sa);
-	// 			printf("\nStack A Indexed Shifted\n");
-
-	// 	lst_print(sa);
-
-	// sa = ft_rrotate_stack(sa);
-	// sa = ft_rrotate_stack(sa);
-	// sa = ft_rrotate_stack(sa);
-	// printf("\nStack A rotated \n");
-	// lst_print(sa);
-	// printf("\nPush b / Stack A\n");
-	// ft_pusha(&sa,&sb);
-	// lst_print(sa);
-	// 	printf("\nPush b / Stack B\n");
-	// 		ft_pusha(&sa,&sb);
-	// ft_pusha(&sa,&sb);
-
-	// lst_print(sb);
-// 	printf("-- 1 --\n");
-// ft_pusha(&sa,&sb);
-// 	printf("Stack B\n");
-// 	lst_print(sb);
-// 	printf("Stack A\n");
-// 	lst_print(sa);
-// 	// lst_print(sb);
-// 	printf("-- 2 --\n");
-// ft_pushb(&sa,&sb);
-// 	printf("Stack B\n");
-// 	lst_print(sb);
-// 	printf("Stack A\n");
-// 	lst_print(sa);
-
-// 	printf("-- 2 --");
-// ft_pushb(&sb,&sa);
-// lst_print(sa);
-// 	printf("Stack B");
+	if (is_sorted(ps.sa))
+		exit(0);
+	ft_index_stack(ps.sa, ps.count_stack);
+	ps.i = 0;
+	while (ps.count_stack >> ps.i++)
+		ps.sa = ft_sort_elements(ps.sa, ps.sb, ps.count_stack);
+	lst_print(ps.sa);
+	/*sa(&ps.sa);
+	printf("\n--swapped--\n");
+	lst_print(ps.sa);*/
 	return (0);
 }

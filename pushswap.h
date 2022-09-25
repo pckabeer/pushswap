@@ -6,7 +6,7 @@
 /*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 08:51:51 by kpanikka          #+#    #+#             */
-/*   Updated: 2022/09/25 08:49:48 by kpanikka         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:21:16 by kpanikka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_elements
 	struct	s_elements	*next;
 	struct	s_elements	*prev;
 }t_stack;
+typedef struct pushswap
+{
+	int		i;
+	int		*data;
+	int		j;
+	t_stack	*sa;
+	t_stack	*sb;
+	int		count;
+	int		count_stack;
+}	t_pswap;
+
 
 int 	*ft_split(char *s, int *c);
 int		ft_atoi(const char *str);
@@ -37,6 +48,8 @@ void	ft_lstclear(t_stack **lst, void (*del)(int));
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_rotate_stack(t_stack **sa);
 t_stack *ft_rrotate_stack(t_stack *sa);
+void sa(t_stack **a);
+
 
 void 	ft_pusha(t_stack **a, t_stack **b);
 void 	ft_pushb(t_stack **a, t_stack **b);
