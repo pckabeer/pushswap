@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dllst.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kpanikka <kpanikka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/24 16:53:39 by kpanikka          #+#    #+#             */
+/*   Updated: 2022/09/24 19:47:14 by kpanikka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "pushswap.h"
 t_stack	*ft_dlstnew(int data)
@@ -10,6 +22,7 @@ t_stack	*ft_dlstnew(int data)
 	element -> data = data;
 	element -> next = NULL;
 	element -> prev = NULL;
+	element -> index = 0;
 	return (element);
 }
 
@@ -34,7 +47,7 @@ void	ft_dlstadd_front(t_stack **lst, t_stack *new)
 
     new->next = *lst;
 	new -> prev = NULL;
-
+	
 	*lst = new;
 }
 
@@ -76,4 +89,14 @@ t_stack	*ft_dlstlast(t_stack *lst)
 		lst = lst->next;
 	}
 	return (lst);
+}
+
+
+void	ft_lstiter(t_stack *lst, void (*f)(int))
+{
+	while (lst)
+	{
+		f(lst->data);
+		lst = lst->next;
+	}
 }
